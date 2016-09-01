@@ -12,5 +12,5 @@ module.exports = {
   appSrc: resolveApp('src'),
   appNodeModules: resolveApp('node_modules'),
   ownNodeModules: resolveApp('node_modules'),
-  publicPath: '14words/'
+  publicPath: '/14words'
 };
