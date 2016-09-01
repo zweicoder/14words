@@ -1,4 +1,4 @@
-const baseUrl = 'http://zweicoder.me/14words';
+const baseUrl = 'https://zweicoder.me/14words';
 
 export function fetchEncoded(address) {
   return postJson(`${baseUrl}/encode`, { query: address })
