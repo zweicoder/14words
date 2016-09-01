@@ -1,4 +1,4 @@
-const baseUrl = 'http://188.166.179.176:5000'; // IP of playground droplet
+const baseUrl = 'http://zweicoder.me/14words';
 
 export function fetchEncoded(address) {
   return postJson(`${baseUrl}/encode`, { query: address })
