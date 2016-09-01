@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+  width: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.App-header-title {
+  font-size: 3em;
+  font-weight: 700;
+}
+.App-header-subtitle {
+  font-size: 1em;
+  font-weight: 300;
+  margin-top: 1em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.container {
+  font-size: 1.3rem;
+  /*max-width: 70em;*/
+  /*margin: auto;*/
+}
+
+.section {
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2.5rem 0 2.5rem;
+  min-height: 8rem;
+  text-align: center;
+}
+
+.section .header {
+  padding: 1.5em 0 1.5em;
+}
+
+.section .message {
+  margin-top: 0.5em;
+  font-size: 1rem;
+  color: firebrick;
+}
+
+.section .result{
+  margin-top: 0.5em;
+  max-width: 35em;
+  color: indianred;
+  font-weight: 500;
+}
+
+input {
+  width: 30em;
+  height: 2.5rem;
+}
