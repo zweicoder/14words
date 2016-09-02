@@ -57,14 +57,7 @@ class Bip39Encoder:
 def encoder_test(encoder, addr):
     encoded =  encoder.encode(addr)
     decoded = encoder.decode(encoded)
-    print encoded
-    print decoded
-    assert decoded == addr
-
-# encoder = Bip39Encoder()
-# encoder_test(encoder, '0x667ABBa73ABfCC9321516b10CBb486F29a855Ae8')
-
-encoder = ScowlEncoder()
-# encoder_test(encoder, '0x667ABBa73ABfCC9321516b10CBb486F29a855Ae8')
-print encoder.decode('Able Thyrotoxic Mane and Simple Polysyllabic Catena Import Undeveloped Obsessed Antitrades with Navigable Migraine')
-print encoder.decode('Aberdonian Marred Weston and Baggy Apicultural Average Camp Interactional Orange Gender with Intercollegiate Asparagus')
+    print 'Input: %s' % addr
+    print 'Encoded: %s' % encoded
+    print 'Decoded: %s' % decoded
+    # assert decoded == addr
