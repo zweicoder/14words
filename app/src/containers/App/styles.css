@@ -44,32 +44,6 @@
   /*margin: auto;*/
 }
 
-.section {
-  display: flex;
-  flex-direction:column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 2.5rem 0 2.5rem;
-  min-height: 8rem;
-  text-align: center;
-}
-
-.section .header {
-  padding: 1.5em 0 1.5em;
-}
-
-.section .message {
-  margin-top: 0.5em;
-  font-size: 1rem;
-  color: firebrick;
-}
-
-.section .result{
-  margin-top: 0.5em;
-  max-width: 35em;
-  color: indianred;
-  font-weight: 500;
-}
 
 input {
   width: 30em;

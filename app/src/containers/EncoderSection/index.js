@@ -5,7 +5,6 @@ import { fetchEncoded } from 'utils/encoderService';
 class EncoderSection extends React.Component {
   constructor(props) {
     super(props);
-    const { mode, ..._props } = this.props;
     this.state = {};
   }
 
@@ -23,7 +22,7 @@ class EncoderSection extends React.Component {
       return;
     }
 
-    fetchEncoded(inp, mode).then((res)=> {
+    fetchEncoded(inp, this.props.mode).then((res)=> {
       this.setState({ result: res })
     })
       .catch((err)=> {
