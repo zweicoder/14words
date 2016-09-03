@@ -56,7 +56,6 @@ def route_decode():
             e = sys.exc_info()
             traceback.print_exc()
             return make_response(jsonify(error='Server Error'), 400)
-            # return make_response(jsonify(error=e), 400)
 
     return make_response(jsonify(error='Bad Request'), 400)
 
