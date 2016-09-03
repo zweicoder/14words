@@ -57,3 +57,5 @@ class DecoderSection extends React.Component {
 DecoderSection.propTypes = {
   mode: React.PropTypes.func.isRequired
 };
+
+export default DecoderSection;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styles from './styles.css';
 import Helmet from 'react-helmet';
-import EncoderSection from 'components/EncoderSection';
-import DecoderSection from 'components/DecoderSection';
+import EncoderSection from 'containers/EncoderSection';
+import DecoderSection from 'containers/DecoderSection';
 import { SCOWL_MODE, BIP39_MODE } from 'utils/constants';
 
 class App extends Component {

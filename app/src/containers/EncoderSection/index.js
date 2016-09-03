@@ -44,3 +44,5 @@ class EncoderSection extends React.Component {
 EncoderSection.propTypes = {
   mode: React.PropTypes.func.isRequired
 };
+
+export default EncoderSection;
