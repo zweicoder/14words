@@ -1,4 +1,3 @@
-import os
 import sys, traceback
 from encoders import ScowlEncoder, Bip39Encoder
 
