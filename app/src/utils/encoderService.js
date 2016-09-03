@@ -1,15 +1,21 @@
-const baseUrl = 'https://zweicoder.me/14words';
+const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://zweicoder.me/14words';
 
-export function fetchEncoded(address) {
-  return postJson(`${baseUrl}/encode`, { query: address })
+export function fetchEncoded(address, mode) {
+  return postJson(`${baseUrl}/encode`, { query: address, mode})
     .then((res)=> {
+      if (res.error) {
+        throw res.error
+      }
       return res.result
     })
 }
 
-export function fetchDecoded(sentence) {
-  return postJson(`${baseUrl}/decode`, { query: sentence })
+export function fetchDecoded(sentence, mode) {
+  return postJson(`${baseUrl}/decode`, { query: sentence, mode })
     .then((res)=> {
+      if (res.error) {
+        throw res.error
+      }
       return res.result
     })
 }
@@ -26,7 +32,6 @@ function postJson(url, json) {
     .then((res)=> {
       if (!res.ok) {
         console.error(res);
-        return null;
       }
       return res.json()
     })

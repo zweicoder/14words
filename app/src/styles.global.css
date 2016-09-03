@@ -49,3 +49,13 @@ input {
   vertical-align: middle;
   box-sizing: border-box;
 }
+
+select {
+  height: 2.25em;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+select:focus {
+  outline: 0;
+  border-color: #129FEA;
+}
