@@ -1,7 +1,7 @@
 const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'https://zweicoder.me/14words';
 
 export function fetchEncoded(address, mode) {
-  return postJson(`${baseUrl}/encode`, { query: address, mode})
+  return postJson(`${baseUrl}/encode`, { query: address, mode })
     .then((res)=> {
       if (res.error) {
         throw res.error

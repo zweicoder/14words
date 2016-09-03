@@ -21,7 +21,6 @@ class EncoderSection extends React.Component {
       this.setState({ message: `Not a valid Ethereum Address!` });
       return;
     }
-
     fetchEncoded(inp, this.props.mode).then((res)=> {
       this.setState({ result: res })
     })
@@ -42,7 +41,7 @@ class EncoderSection extends React.Component {
 }
 
 EncoderSection.propTypes = {
-  mode: React.PropTypes.func.isRequired
+  mode: React.PropTypes.string.isRequired
 };
 
 export default EncoderSection;

@@ -26,13 +26,13 @@ class App extends Component {
         <div className={styles.container}>
           <div className={styles.chooser}>
             <div>Encoder</div>
-            <select defaultValue="BIP39" onChange={this.changeInputMode}>
+            <select defaultValue={BIP39_MODE} onChange={this.changeInputMode}>
               <option value={BIP39_MODE}>BIP39 (15 commonly used words)</option>
               <option value={SCOWL_MODE}>Scowl (Original 14words)</option>
             </select>
           </div>
-          <EncoderSection mode={this.state.encoderMode}/>
-          <DecoderSection mode={this.state.encoderMode}/>
+          <EncoderSection mode={this.state.encoderMode || BIP39_MODE}/>
+          <DecoderSection mode={this.state.encoderMode || BIP39_MODE}/>
         </div>
       </div>
     );
