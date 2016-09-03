@@ -30,7 +30,6 @@ def handle_data(data, mode):
             result = encoder.encode(data['query']) if mode == 'encode' else encoder.decode(data['query'])
             return {'result': result}
         except:
-            e = sys.exc_info()
             traceback.print_exc()
             return {'error': 'Server Error'}
 
@@ -44,7 +43,7 @@ def route_encode():
     if 'error' in response:
         return make_response(jsonify(error=response['error']), 400)
 
-    return make_response(jsonify(result=response['result']), 400)
+    return make_response(jsonify(result=response['result']), 200)
 
 
 @app.route('/decode', methods=['POST'])
@@ -54,7 +53,7 @@ def route_decode():
     if 'error' in response:
         return make_response(jsonify(error=response['error']), 400)
 
-    return make_response(jsonify(result=response['result']), 400)
+    return make_response(jsonify(result=response['result']), 200)
 
 
 if __name__ == '__main__':
