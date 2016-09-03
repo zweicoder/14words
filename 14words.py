@@ -6,7 +6,7 @@ SCOWL_MODE = 'SCOWL'
 BIP39_MODE = 'BIP39'
 
 
-from flask import Flask, jsonify, request, Response
+from flask import Flask, jsonify, request, Response, make_response
 
 app = Flask(__name__)
 
@@ -21,22 +21,40 @@ bip39_encoder = Bip39Encoder()
 def route_encode():
     data = request.get_json(force=True)
     if data['query']:
-        if data['mode'] == SCOWL_MODE:
-            return jsonify(result=scowl_encoder.encode(data['query']))
-        elif data['mode'] == BIP39_MODE:
-            return jsonify(result=bip39_encoder.encode(data['query']))
-    return 'Bad Request'
+        try:
+            if data['mode'] == SCOWL_MODE:
+                encoder = scowl_encoder
+            elif data['mode'] == BIP39_MODE:
+                encoder = bip39_encoder
+            else:
+                return make_response(jsonify(error='Bad Request: No such mode', 400))
+
+            return jsonify(result=encoder.encode(data['query']))
+        except:
+            e = sys.exc_info()[0]
+            return make_response(jsonify(error=e), 400)
+
+    return make_response(jsonify(error='Bad Request', 400))
 
 
 @app.route('/decode', methods=['POST'])
 def route_decode():
     data = request.get_json(force=True)
     if data['query']:
-        if data['mode'] == SCOWL_MODE:
-            return jsonify(result=scowl_encoder.decode(data['query']))
-        elif data['mode'] == BIP39_MODE:
-            return jsonify(result=bip39_encoder.decode(data['query']))
-    return 'Bad Request'
+        try:
+            if data['mode'] == SCOWL_MODE:
+                encoder = scowl_encoder
+            elif data['mode'] == BIP39_MODE:
+                encoder = bip39_encoder
+            else:
+                return make_response(jsonify(error='Bad Request: No such mode', 400))
+
+            return jsonify(result=encoder.decode(data['query']))
+        except:
+            e = sys.exc_info()[0]
+            return make_response(jsonify(error=e), 400)
+
+    return make_response(jsonify(error='Bad Request', 400))
 
 
 if __name__ == '__main__':
