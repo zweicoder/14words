@@ -9,48 +9,61 @@ class DecoderSection extends React.Component {
     this.state = {};
   }
 
-  decodeAddress = (e) => {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.mode !== this.props.mode) {
+      this.props = nextProps;
+      this.decodeAddress(this.state.input)
+    }
+  }
+
+  decodeAddress = (addr) => {
     this.setState({ message: null });
     this.setState({ result: null });
-
-    const inp = e.target.value;
-    if (!inp) {
+    if (!addr) {
       return;
     }
 
-    let requiredLength;
-    const { mode } = this.props;
-    switch (mode) {
-      case BIP39_MODE:
-        requiredLength = 15;
-        break;
-      case SCOWL_MODE:
-        requiredLength = 14;
-        break;
-      default:
-        console.error('Bad mode: ', mode)
-    }
-    if (inp.split(' ').length !== requiredLength) {
+    const requiredLength = getRequiredLength(this.props.mode);
+    if (addr.split(' ').length !== requiredLength) {
       this.setState({ message: `Input should have ${requiredLength} words!` });
       return;
     }
 
-    fetchDecoded(inp, mode).then((res)=> {
+    fetchDecoded(addr, this.props.mode).then((res)=> {
       this.setState({ result: res })
     })
       .catch((err)=> {
+        console.error('Error while fetching decoded result: ', err);
         this.setState({ message: err })
       })
   };
 
+  handleInputChange = (e) => {
+    const inp = e.target.value;
+    this.setState({ input: inp });
+    this.decodeAddress(inp);
+  };
+
   render() {
     return <Section
-      header="Translate a 14 words sentence into an address!"
+      header={`Translate a sentence into an address!`}
       inputPlaceholder="Put Your Sentence Here"
-      onChange={this.decodeAddress}
+      onChange={this.handleInputChange}
       message={this.state.message}
       result={this.state.result}
     />
+  }
+}
+
+function getRequiredLength(mode) {
+  switch (mode) {
+    case BIP39_MODE:
+      return 15;
+    case SCOWL_MODE:
+      return 14;
+    default:
+      console.error('Bad mode: ', mode);
+      return -1;
   }
 }
 
