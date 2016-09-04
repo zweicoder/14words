@@ -29,6 +29,8 @@ def handle_data(data, mode):
 
             result = encoder.encode(data['query']) if mode == 'encode' else encoder.decode(data['query'])
             return {'result': result}
+        except ValueError:
+	    return {'error': 'Only words in the used dictionary work!'}
         except:
             traceback.print_exc()
             return {'error': 'Server Error'}
